@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "module": "ESNext",
+    "target": "ES5",
+    "allowJs": true,
+    "baseUrl": "./src",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "lib": [
+      "ES5",
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/phaser/types"
+    ],
+    "types": [
+      "Phaser"
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "phaser-3-base",
+  "version": "0.0.1",
+  "description": "A boilerplate for games made with Phaser 3 and Webpack.",
+  "main": "index.js",
+  "sideEffects": [
+    "*.css", 
+    "*.scss"
+  ],
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "start": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuigoto/phaser-3-base.git"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "webpack",
+    "phaser",
+    "game"
+  ],
+  "author": "Fabio Y. Goto <lab@yuiti.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yuigoto/phaser-3-base/issues"
+  },
+  "homepage": "https://github.com/yuigoto/phaser-3-base#readme",
+  "devDependencies": {
+    "@types/html-webpack-plugin": "^3.2.5",
+    "@types/mini-css-extract-plugin": "^1.4.2",
+    "@types/node": "^14.14.41",
+    "babel-loader": "^8.2.2",
+    "babel-polyfill": "^6.26.0",
+    "copy-webpack-plugin": "^8.1.1",
+    "css-loader": "^5.2.2",
+    "dotenv": "^8.2.0",
+    "file-loader": "^6.2.0",
+    "html-minimizer-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^5.3.1",
+    "interpolate-html-plugin": "^4.0.0",
+    "mini-css-extract-plugin": "^1.5.0",
+    "sass": "^1.32.10",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^9.0.0",
+    "typescript": "^4.2.4",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "phaser": "^3.54.0"
+  }
+}
