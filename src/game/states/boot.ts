@@ -36,6 +36,6 @@ export class Boot extends Scene {
       // MOBILE
     }
 
-    this.game.scene.start("preload");
+    this.scene.start("preload");
   }
 }

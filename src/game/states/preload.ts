@@ -82,7 +82,7 @@ export class Preload extends Scene {
   }
 
   create() {
-    this.game.scene.start("title");
+    this.scene.start("title");
   }
 
   protected setLoaderSprites() {
