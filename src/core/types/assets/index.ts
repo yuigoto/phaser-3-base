@@ -1,30 +1,17 @@
-import { HashMap } from "core/types";
-
 /**
  * core/types/assets
  * ----------------------------------------------------------------------
- * Typings for assets.
- * 
- * @since 0.0.1
+ * @author      Fabio Y. Goto <lab@yuiti.dev>
+ * @since       0.0.1
  */
+import { HashMap } from "core/types";
 
 /**
- * Defines basic asset properties.
+ * Basic asset properties.
  */
 export type Asset = HashMap<any> & {
-  /**
-   * In-game asset name, used to retrieve this asset from cache.
-   */
   key: string;
-
-  /**
-   * Asset file path.
-   */
   url: string;
-
-  /**
-   * Defines if the asset should be ignored by the preloader.
-   */
   ignore: boolean;
 };
 
@@ -38,7 +25,7 @@ export type AssetNoFile<T = Asset> = T extends Asset ? Omit<T, "url"> : never;
  */
 export type AssetBitmapFont = Asset & {
   /**
-   * Path to the file containing the texture atlas for the bitmap font, in 
+   * Path to the file containing the texture atlas for the bitmap font, in
    * XML/JSON formats.
    */
   fontDataURL?: string | undefined;
@@ -49,7 +36,7 @@ export type AssetBitmapFont = Asset & {
  */
 export type AssetImage = Asset & {
   /**
-   * Defines if this sprite should overwrite an unloaded file with the same 
+   * Defines if this sprite should overwrite an unloaded file with the same
    * name/key.
    */
   overwrite: boolean;
@@ -61,8 +48,8 @@ export type AssetImage = Asset & {
 export type AssetSound = AssetNoFile & {
   /**
    * Path to the file, or array of paths, for the current sound.
-   * 
-   * Overwrites the parent `file`, since sounds can be loaded on multiple 
+   *
+   * Overwrites the parent `file`, since sounds can be loaded on multiple
    * formats (mp3, ogg, wav).
    */
   url: string | Array<string>;
@@ -109,8 +96,8 @@ export type AssetSpriteSheet = Asset & {
  * Defines what you need to have a centralized asset store.
  */
 export type AssetList = HashMap<any> & {
-  image?: Array<AssetImage>,
-  sound?: Array<AssetSound>,
-  spriteSheet?: Array<AssetSpriteSheet>,
-  bitmapFont?: Array<AssetBitmapFont>
+  image?: Array<AssetImage>;
+  sound?: Array<AssetSound>;
+  spriteSheet?: Array<AssetSpriteSheet>;
+  bitmapFont?: Array<AssetBitmapFont>;
 };

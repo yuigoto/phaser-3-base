@@ -1,9 +1,9 @@
 {
-  "name": "Phaser 3 Base",
+  "name": "Phaser3 Webpack",
   "version": "0.0.1",
   "description": "A boilerplate for games made with Phaser 3 and Webpack",
-  "repository": "https://github.com/yuigoto/phaser-3-base",
-  "url": "https://github.com/yuigoto/phaser-3-base",
+  "repository": "https://github.com/yuigoto/phaser3-webpack",
+  "url": "https://github.com/yuigoto/phaser3-webpack",
   "keywords": [
     "phaser",
     "game",

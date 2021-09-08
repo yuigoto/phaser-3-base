@@ -1,31 +1,33 @@
 {
   "compilerOptions": {
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "module": "ESNext",
-    "target": "ES5",
     "allowJs": true,
-    "baseUrl": "./src",
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
     "allowSyntheticDefaultImports": true,
-    "isolatedModules": true,
+    "baseUrl": "./",
+    "declaration": false,
     "esModuleInterop": true,
-    "lib": [
-      "ES5",
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
-    "typeRoots": [
-      "./node_modules/@types",
-      "./node_modules/phaser/types"
-    ],
-    "types": [
-      "Phaser"
-    ]
-  }
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["ES5", "DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "noImplicitAny": true,
+    "outDir": "build",
+    "paths": {
+      "*": ["node_modules/*", "src/*"]
+    },
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "ES5"
+  },
+  "exclude": ["./src/**/*.spec.ts"],
+  "files": ["./global.d.ts"],
+  "include": ["src/**/*.ts"]
 }

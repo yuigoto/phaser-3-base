@@ -1,23 +1,18 @@
+/**
+ * main
+ * ----------------------------------------------------------------------
+ * @author      Fabio Y. Goto <lab@yuiti.dev>
+ * @since       0.0.1
+ */
 import { Game } from "phaser";
-import config from "core/config";
+import { config } from "game/config";
 import Info from "info.json";
 
-/**
- * core/Main
- * ----------------------------------------------------------------------
- * Main game class, bootstraps the game and its scenes.
- *
- * Also responsible for filling game information on the HTML.
- *
- * @since 0.0.1
- */
-export class Main extends Game {
-  constructor () {
+export default class Main extends Game {
+  constructor() {
     super(config);
-
     Main.setGameInfo();
-
-    this.scene.start("Boot");
+    this.scene.start("boot");
   }
 
   /**
@@ -25,7 +20,7 @@ export class Main extends Game {
    *
    * @private
    */
-  private static setGameInfo (): void {
+  private static setGameInfo(): void {
     const header = document.querySelector("#header");
     const footer = document.querySelector("#footer");
     const data = document.querySelector("#info");

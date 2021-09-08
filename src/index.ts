@@ -1,11 +1,8 @@
-import { Main } from "core/Main";
+import Main from "main";
 import "styles/main.scss";
 
-/**
- * Phaser 3 Base
- * ----------------------------------------------------------------------
- * A simple Phaser 3 application boilerplate.
- * 
- * @version 0.0.1
- */
-new Main();
+if (window) {
+  window.onload = () => {
+    new Main();
+  };
+}
