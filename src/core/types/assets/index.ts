@@ -21,6 +21,15 @@ export type Asset = HashMap<any> & {
 export type AssetNoFile<T = Asset> = T extends Asset ? Omit<T, "url"> : never;
 
 /**
+ * Defines properties for assets of type "texture atlas".
+ */
+export type AssetAtlas = Asset & {
+  atlasUrl?: string;
+  atlasXhrSettings?: Types.Loader.XHRSettingsObject;
+  textureXhrSerttings?: Types.Loader.XHRSettingsObject;
+};
+
+/**
  * Defines properties for assets of type "bitmap font".
  */
 export type AssetBitmapFont = Asset & {
@@ -91,13 +100,25 @@ export type AssetSpriteSheet = Asset & {
 };
 
 /**
+ * Defines properties for assets of type "tile map".
+ *
+ * Works for Impact, CSV and Tiled maps.
+ */
+export type AssetTileMap = Asset & {
+  type: "impact" | "csv" | false | undefined | null;
+  xhrSettings?: Types.Loader.XHRSettingsObject;
+};
+
+/**
  * Asset list store type.
  *
  * Defines what you need to have a centralized asset store.
  */
 export type AssetList = HashMap<any> & {
+  atlas?: Array<AssetAtlas>;
+  bitmapFont?: Array<AssetBitmapFont>;
   image?: Array<AssetImage>;
   sound?: Array<AssetSound>;
   spriteSheet?: Array<AssetSpriteSheet>;
-  bitmapFont?: Array<AssetBitmapFont>;
+  tileMap?: Array<AssetTileMap>;
 };

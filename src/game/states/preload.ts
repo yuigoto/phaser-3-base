@@ -78,6 +78,50 @@ export class Preload extends Scene {
       }
     }
 
+    if (Assets.atlas) {
+      for (let atlas of Assets.atlas) {
+        if (!atlas.ignore) {
+          let n = this.load.atlas(
+            atlas.key,
+            atlas.url,
+            atlas.atlasUrl,
+            atlas.textureXhrSerttings,
+            atlas.atlasXhrSettings
+          );
+        }
+      }
+    }
+
+    if (Assets.tileMap) {
+      for (let tileMap of Assets.tileMap) {
+        if (!tileMap.ignore) {
+          switch (tileMap.type) {
+            case "csv":
+              this.load.tilemapCSV(
+                tileMap.key,
+                tileMap.url,
+                tileMap.xhrSettings
+              );
+              break;
+            case "impact":
+              this.load.tilemapImpact(
+                tileMap.key,
+                tileMap.url,
+                tileMap.xhrSettings
+              );
+              break;
+            default:
+              this.load.tilemapTiledJSON(
+                tileMap.key,
+                tileMap.url,
+                tileMap.xhrSettings
+              );
+              break;
+          }
+        }
+      }
+    }
+
     // All your @font-face fonts should be loaded in here
   }
 
