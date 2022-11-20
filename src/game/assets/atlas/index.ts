@@ -4,9 +4,9 @@
  * @author      Fabio Y. Goto <lab@yuiti.dev>
  * @since       0.0.1
  */
-import { AssetAtlas } from "core/types/assets";
+import { AssetAtlas } from '@/core/types/assets';
 
 /**
- * Stores all texture atlas data.
+ * Asset atlas store.
  */
 export const AtlasList: Array<AssetAtlas> = [];

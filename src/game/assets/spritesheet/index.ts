@@ -4,15 +4,15 @@
  * @author      Fabio Y. Goto <lab@yuiti.dev>
  * @since       0.0.1
  */
-import { AssetSpriteSheet } from "core/types/assets";
+import { AssetSpriteSheet } from '@/core/types/assets';
 
 /**
- * Stores all sprite sheet data.
+ * Spritesheet store.
  */
 export const SpriteSheetList: Array<AssetSpriteSheet> = [
   {
-    key: "spritesheet.corridor",
-    url: require("assets/img/spritesheet.corridor.png"),
+    key: 'spritesheet.corridor',
+    url: require('@/assets/img/spritesheet.corridor.png'),
     frameWidth: 64,
     frameHeight: 64,
     frameMax: 12,

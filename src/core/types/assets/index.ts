@@ -1,62 +1,81 @@
 /**
  * core/types/assets
  * ----------------------------------------------------------------------
+ * Core types for assets.
+ *
  * @author      Fabio Y. Goto <lab@yuiti.dev>
  * @since       0.0.1
  */
-import { HashMap } from "core/types";
+import { Types } from 'phaser';
 
 /**
- * Basic asset properties.
+ * Basic asset.
  */
-export type Asset = HashMap<any> & {
+export type Asset = Record<string, any> & {
+  /**
+   * Asset key, must be unique.
+   */
   key: string;
+
+  /**
+   * Asset path.
+   */
   url: string;
+
+  /**
+   * If the asset should be ignored by the loader.
+   */
   ignore: boolean;
 };
 
 /**
- * Defines basic asset properties without the file.
- */
-export type AssetNoFile<T = Asset> = T extends Asset ? Omit<T, "url"> : never;
-
-/**
- * Defines properties for assets of type "texture atlas".
+ * Texture atlas asset type.
  */
 export type AssetAtlas = Asset & {
+  /**
+   * Asset atlas file path.
+   */
   atlasUrl?: string;
+
+  /**
+   * Atlas XHR settings.
+   */
   atlasXhrSettings?: Types.Loader.XHRSettingsObject;
-  textureXhrSerttings?: Types.Loader.XHRSettingsObject;
+
+  /**
+   * Texture XHR settings.
+   */
+  textureXhrSettings?: Types.Loader.XHRSettingsObject;
 };
 
 /**
- * Defines properties for assets of type "bitmap font".
+ * Bitmap font asset type.
  */
 export type AssetBitmapFont = Asset & {
   /**
-   * Path to the file containing the texture atlas for the bitmap font, in
+   * Path to the file containing the bitmap font's texture atlas, in
    * XML/JSON formats.
    */
   fontDataURL?: string | undefined;
 };
 
 /**
- * Defines properties for assets of type "image".
+ * Image asset type.
  */
 export type AssetImage = Asset & {
   /**
    * Defines if this sprite should overwrite an unloaded file with the same
-   * name/key.
+   * name or key.
    */
-  overwrite: boolean;
+  overwrite?: boolean;
 };
 
 /**
- * Defines properties for assets of type "sound".
+ * Sound asset type.
  */
-export type AssetSound = AssetNoFile & {
+export type AssetSound = Omit<Asset, 'url'> & {
   /**
-   * Path to the file, or array of paths, for the current sound.
+   * Path to a file, or array of paths, for the current sound.
    *
    * Overwrites the parent `file`, since sounds can be loaded on multiple
    * formats (mp3, ogg, wav).
@@ -65,7 +84,7 @@ export type AssetSound = AssetNoFile & {
 };
 
 /**
- * Defines properties for assets of type "sprite sheet".
+ * Sprite sheet asset type.
  */
 export type AssetSpriteSheet = Asset & {
   /**
@@ -100,25 +119,51 @@ export type AssetSpriteSheet = Asset & {
 };
 
 /**
- * Defines properties for assets of type "tile map".
- *
- * Works for Impact, CSV and Tiled maps.
+ * Tile map asset type.
  */
 export type AssetTileMap = Asset & {
-  type: "impact" | "csv" | false | undefined | null;
+  /**
+   * Tilemap format.
+   */
+  type: 'impact' | 'csv' | false | undefined | null;
+
+  /**
+   * Tilemap settings.
+   */
   xhrSettings?: Types.Loader.XHRSettingsObject;
 };
 
 /**
- * Asset list store type.
- *
- * Defines what you need to have a centralized asset store.
+ * Asset list, used to group all assets under a single tree.
  */
-export type AssetList = HashMap<any> & {
+export type AssetList = Record<string, any> & {
+  /**
+   * Atlas asset list.
+   */
   atlas?: Array<AssetAtlas>;
+
+  /**
+   * Bitmap font asset list.
+   */
   bitmapFont?: Array<AssetBitmapFont>;
+
+  /**
+   * Image asset list.
+   */
   image?: Array<AssetImage>;
+
+  /**
+   * Sound asset list.
+   */
   sound?: Array<AssetSound>;
+
+  /**
+   * Sprite sheet asset list.
+   */
   spriteSheet?: Array<AssetSpriteSheet>;
+
+  /**
+   * Tile map asset list.
+   */
   tileMap?: Array<AssetTileMap>;
 };

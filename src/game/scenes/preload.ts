@@ -1,37 +1,49 @@
 /**
- * game/states/preload
+ * game/scenes/preload
  * ----------------------------------------------------------------------
  * @author      Fabio Y. Goto <lab@yuiti.dev>
  * @since       0.0.1
  */
-import { Assets } from "game/assets";
-import { Scene, Types, GameObjects } from "phaser";
+import { GameObjects, Scene, Types } from 'phaser';
+import Assets from '@/game/assets';
 
+/**
+ * Preload scene configuration.
+ */
 const SceneConfig: Types.Scenes.SettingsConfig = {
   active: false,
   visible: false,
-  key: "preload",
+  key: 'preload',
 };
 
+/**
+ * Preload scene.
+ */
 export class Preload extends Scene {
   /**
-   * Preloader inner bar.
+   * Preload inner bar.
    */
   preloadInner: GameObjects.Sprite | null = null;
 
   /**
-   * Outer frame of the preloader.
+   * Preload outer frame.
    */
   preloadOuter: GameObjects.Sprite | null = null;
 
+  /**
+   * Preload scene constructor.
+   */
   constructor() {
     super(SceneConfig);
   }
 
+  /**
+   * Preloads all assets.
+   */
   preload() {
     this.setLoaderSprites();
 
-    this.load.on("progress", (value: number) => {
+    this.load.on('progress', (value: number) => {
       if (this.preloadInner) this.preloadInner.setScale(value, 1);
     });
 
@@ -51,7 +63,7 @@ export class Preload extends Scene {
       }
     }
 
-    if (Assets.spriteSheet) {
+    if (Assets?.spriteSheet) {
       for (let spriteSheet of Assets.spriteSheet) {
         if (!spriteSheet.ignore) {
           this.load.spritesheet(spriteSheet.key, spriteSheet.url, {
@@ -66,7 +78,7 @@ export class Preload extends Scene {
       }
     }
 
-    if (Assets.bitmapFont) {
+    if (Assets?.bitmapFont) {
       for (let bitmapFont of Assets.bitmapFont) {
         if (!bitmapFont.ignore) {
           this.load.bitmapFont(
@@ -78,14 +90,14 @@ export class Preload extends Scene {
       }
     }
 
-    if (Assets.atlas) {
+    if (Assets?.atlas) {
       for (let atlas of Assets.atlas) {
         if (!atlas.ignore) {
-          let n = this.load.atlas(
+          this.load.atlas(
             atlas.key,
             atlas.url,
             atlas.atlasUrl,
-            atlas.textureXhrSerttings,
+            atlas.textureXhrSettings,
             atlas.atlasXhrSettings
           );
         }
@@ -96,14 +108,14 @@ export class Preload extends Scene {
       for (let tileMap of Assets.tileMap) {
         if (!tileMap.ignore) {
           switch (tileMap.type) {
-            case "csv":
+            case 'csv':
               this.load.tilemapCSV(
                 tileMap.key,
                 tileMap.url,
                 tileMap.xhrSettings
               );
               break;
-            case "impact":
+            case 'impact':
               this.load.tilemapImpact(
                 tileMap.key,
                 tileMap.url,
@@ -122,18 +134,24 @@ export class Preload extends Scene {
       }
     }
 
-    // All your @font-face fonts should be loaded in here
+    // Load @font-face fonts here, if needed.
   }
 
+  /**
+   * Creates the scene.
+   */
   create() {
-    this.scene.start("title");
+    this.scene.start('title');
   }
 
+  /**
+   * Sets the preloader sprites.
+   */
   protected setLoaderSprites() {
     this.preloadOuter = this.add.sprite(
       this.cameras.main.centerX,
       this.cameras.main.centerY,
-      "loader.outer"
+      'loader.outer'
     );
     this.preloadOuter.setOrigin(0, 0);
     this.preloadOuter.x -= this.preloadOuter.width / 2;
@@ -142,7 +160,7 @@ export class Preload extends Scene {
     this.preloadInner = this.add.sprite(
       this.cameras.main.centerX,
       this.cameras.main.centerY,
-      "loader.inner"
+      'loader.inner'
     );
     this.preloadInner.setOrigin(0, 0);
     this.preloadInner.x -= this.preloadInner.width / 2;

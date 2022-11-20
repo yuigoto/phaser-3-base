@@ -1,16 +1,21 @@
 /**
  * game/config
  * ----------------------------------------------------------------------
+ * Phaser game configuration.
+ *
  * @author      Fabio Y. Goto <lab@yuiti.dev>
  * @since       0.0.1
  */
-import { Scale, Types, AUTO } from "phaser";
-import Info from "info.json";
-import { Boot } from "game/states/boot";
-import { Preload } from "game/states/preload";
-import { Title } from "game/states/title";
+import { AUTO, Scale, Types } from 'phaser';
+import { Boot } from '@/game/scenes/boot';
+import { Preload } from '@/game/scenes/preload';
+import { Title } from '@/game/scenes/title';
+import Info from '@/info.json';
 
-export const config: Types.Core.GameConfig = {};
+/**
+ * Game configuration.
+ */
+const config: Types.Core.GameConfig = {};
 
 config.title = Info.name;
 
@@ -26,14 +31,16 @@ config.scale = {
 };
 
 config.physics = {
-  default: "arcade",
+  default: 'arcade',
   arcade: {
     debug: true,
   },
 };
 
-config.parent = "game";
+config.parent = 'game';
 
-config.backgroundColor = "#6d6d6d";
+config.backgroundColor = '#6d6d6d';
 
 config.scene = [Boot, Preload, Title];
+
+export default config;

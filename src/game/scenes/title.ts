@@ -1,15 +1,18 @@
 /**
- * states/title
+ * game/scenes/title
  * ----------------------------------------------------------------------
  * @author      Fabio Y. Goto <lab@yuiti.dev>
  * @since       0.0.1
  */
-import { Scene, Types, GameObjects } from "phaser";
+import { GameObjects, Scene, Types } from 'phaser';
 
+/**
+ * Title scene configuration.
+ */
 const SceneConfig: Types.Scenes.SettingsConfig = {
   active: false,
   visible: false,
-  key: "title",
+  key: 'title',
 };
 
 export class Title extends Scene {
@@ -27,22 +30,22 @@ export class Title extends Scene {
       1
     );
 
-    const text = this.add.text(4, 4, "Hello, World!", {
-      fontFamily: "yx_ui",
-      fontSize: "16px",
+    const text = this.add.text(4, 4, 'Hello, World!', {
+      fontFamily: 'yx_ui',
+      fontSize: '16px',
     });
 
-    const sprite: GameObjects.Sprite = this.add.sprite(128, 128, "sprite.dial");
+    const sprite: GameObjects.Sprite = this.add.sprite(128, 128, 'sprite.dial');
     sprite.rotation = 35;
 
     const corridor: GameObjects.Sprite = this.add.sprite(
       64,
       64,
-      "spritesheet.corridor"
+      'spritesheet.corridor'
     );
     corridor.anims.create({
-      key: "move",
-      frames: this.anims.generateFrameNumbers("spritesheet.corridor", {
+      key: 'move',
+      frames: this.anims.generateFrameNumbers('spritesheet.corridor', {
         start: 0,
       }),
       frameRate: 30,
@@ -50,11 +53,11 @@ export class Title extends Scene {
       duration: 1000,
     });
     corridor.anims.play({
-      key: "move",
+      key: 'move',
       duration: 500,
     });
 
-    const sound = this.sound.add("sound.door");
+    const sound = this.sound.add('sound.door');
     sound.play();
   }
 }
