@@ -215,10 +215,7 @@ export function arrayRotate3d<T = any>(
  *     Array to shuffle
  * @returns
  */
-export function arrayShuffle<T = any>(
-  array: Array<T>,
-  deep: boolean = true
-): Array<T> {
+export function arrayShuffle<T = any>(array: Array<T>): Array<T> {
   let shuffled: Array<T> = [...array];
   let length: number = shuffled.length;
   let temp: T;

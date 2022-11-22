@@ -21,7 +21,7 @@ export class Title extends Scene {
   }
 
   create() {
-    const fill = this.add.rectangle(
+    this.add.rectangle(
       this.cameras.main.centerX,
       this.cameras.main.centerY,
       640,
@@ -30,7 +30,7 @@ export class Title extends Scene {
       1
     );
 
-    const text = this.add.text(4, 4, 'Hello, World!', {
+    this.add.text(4, 4, 'Hello, World!', {
       fontFamily: 'yx_ui',
       fontSize: '16px',
     });
